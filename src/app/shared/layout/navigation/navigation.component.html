@@ -1,28 +1,41 @@
 <aside id="left-panel">
 
-  <!-- User info -->
-  <sa-login-info></sa-login-info>
-  <!-- end user info -->
+    <!-- User info -->
+    <sa-login-info></sa-login-info>
+    <!-- end user info -->
+  
+    <nav>
+      <!-- NOTE: Notice the gaps after each icon usage <i></i>..
+      Please note that these links work a bit different than
+      traditional href="" links. See documentation for details.
+      -->
 
-  <nav>
-    <!-- NOTE: Notice the gaps after each icon usage <i></i>..
-    Please note that these links work a bit different than
-    traditional href="" links. See documentation for details.
-    -->
+      <ul saSmartMenu>
+        <li *ngFor="let auth Of filterParentItems()" routerLinkActive="{{ auth.active }}">
+          <a title="Dashboard" [routerLink]="auth.active ? auth.link : null"><i [class]="auth.imgclass"></i> <span
+            class="menu-item-parent">{{auth.title | i18n}}</span>
+            <span *ngIf="retrieveChildImgMessage(auth)"
+                class="badge pull-right inbox-badge margin-right-13">14</span>
+          </a>
+          <ul *ngFor="let child Of retrieveChildItems(auth)">
+            <li routerLinkActive="active">
+              <a routerLink="{{ child.link }}">
+                <i [class]="child.imgclass"></i>
+                {{child.title | i18n}}
+              </a>
+            </li>
+          </ul>
+        <!-- </li>
+            <li routerLinkActive="active">
+              <a routerLink="/outlook" title="Outlook">
+                <i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">{{'Outlook' | i18n}}</span><span
+                class="badge pull-right inbox-badge margin-right-13">14</span></a>
+            </li> -->
+      </ul>
+  
+    </nav>
 
-    <ul saSmartMenu>
-      <li routerLinkActive="active">
-          <a routerLink="/home" title="Home"><i class="fa fa-lg fa-fw fa-home"></i><span
-            class="menu-item-parent">{{'Home' | i18n}}</span></a>
-      </li>
-
-      
-
-    
-    </ul>
-
-  </nav>
-
-  <!--<sa-minify-menu></sa-minify-menu>-->
-
-</aside>
+    <sa-minify-menu></sa-minify-menu>
+  
+  </aside>
+  

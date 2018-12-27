@@ -8,19 +8,24 @@ const routes: Routes = [
   {
     path: "",
     component: MainLayoutComponent,
-    data: { pageTitle: "Home" },
+    data: { pageTitle: "" },
     children: [
 
       {
         path: "",
         loadChildren: "app/features/home/home.module#HomeModule",
-        data: { pageTitle: "Home Page" }
+        data: { pageTitle: "Home" }
       },
 
       {
-        path: "home",
-        loadChildren: "app/features/home/home.module#HomeModule",
-        data: { pageTitle: "Home Page" }
+        path: "wires",
+        loadChildren: "app/features/wires/wires.module#WiresModule",
+        data: { pageTitle: "Wires" }
+      },
+      {
+        path: "outlook",
+        loadChildren: "app/features/outlook/outlook.module#OutlookModule",
+        data: { pageTitle: "Outlook" }
       }
     ]
   },

@@ -1,15 +1,16 @@
 'use strict';
+//var mongoose = require('mongoose');
 module.exports = function(app) {
   var todoList = require('../controllers/ldapApiController');
 
   // todoList Routes
-  app.route('/tasks')
-    .get(todoList.list_all_tasks)
-    .post(todoList.create_a_task);
+  app.route('/auths')
+    .get(todoList.list_all_auths)
+    .post(todoList.create_an_auth);
 
 
-  app.route('/tasks/:taskId')
-    .get(todoList.read_a_task)
-    .put(todoList.update_a_task)
-    .delete(todoList.delete_a_task);
+  app.route('/auths/:username')
+    .get(todoList.get_entitlements)
+    .put(todoList.update_an_auth)
+    .delete(todoList.delete_an_auth);
 };

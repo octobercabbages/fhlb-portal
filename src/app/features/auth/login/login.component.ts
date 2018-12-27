@@ -1,21 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import { AuthService } from "@app/core/services/auth.service";
+import { RemoteApiService } from "@app/core/services/remote-api.service";
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html'
+  templateUrl: './login.component.html',
+  providers: [AuthService, RemoteApiService]
 })
 export class LoginComponent implements OnInit {
-
-  constructor(private router: Router) { }
-
-  ngOnInit() {
+  username: string;
+  password: string;
+  data: Observable<any>;
+  constructor(private router: Router, private authServ: AuthService) { 
   }
 
-  login(event){
-    alert(event);
+  ngOnInit() {
+    
+  }
+
+  login(){
     event.preventDefault();
-    this.router.navigate(['/dashboard'])
+
+  
+        this.router.navigate(['/home']);
+    //console.log(this.data);
+    //alert(JSON.stringify(this.data));
+    //this.router.navigate(['/home'])
   }
 
 }

@@ -1,33 +1,40 @@
 'use strict';
-var fs = require('../assets/projects.json');
+var auth = require('../controllers/auth.controller');
+var users = require('../assets/authorizations.json');
+var user = {};
 
-var mongoose = require('mongoose'),
-  Task = mongoose.model('Tasks');
-
-exports.list_all_tasks = function(req, res) {
-  res.json(fs);
+exports.list_all_auths = function(req, res) {
+  console.log("ALL");
+  res.json(users);
 };
 
 
 
 
-exports.create_a_task = function(req, res) {
-  res.sned()
+exports.create_an_auth = function(req, res) {
+  res.send(user);
 };
 
 
-exports.read_a_task = function(req, res) {
-
+exports.get_entitlements = function(req, res) {
+  console.log(req.params.username);
+  users.forEach(element => {
+    if(element.username == req.params.username){
+      user = element
+    }
+  });
+  console.log(user);
+  res.send(user);
 };
 
 
-exports.update_a_task = function(req, res) {
-
+exports.update_an_auth = function(req, res) {
+  res.send("UPDATE");
 };
 
 
-exports.delete_a_task = function(req, res) {
-
+exports.delete_an_auth = function(req, res) {
+  res.send("DELETE");
 
 };
 

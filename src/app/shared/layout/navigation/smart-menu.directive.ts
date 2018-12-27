@@ -48,19 +48,10 @@ export class SmartMenuDirective implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.$menu.find('li:has(> ul)').each((i, li) => {
-      let $menuItem = $(li);
-      let $a = $menuItem.find('>a');
-      let sign = $('<b class="collapse-sign"><em class="fa fa-plus-square-o"/></b>');
-
-      $a.on('click', (e) => {
-        this.toggle($menuItem);
-        e.stopPropagation();
-        return false;
-      }).append(sign);
-    })
+        
 
     setTimeout(()=>{
+      this.buildParentLinks(), //This was added because the dynamic links weren't rendering fast enough and the click functions were missing...
       this.processLayout(this.layoutService.store)
     }, 200)
 
@@ -69,6 +60,20 @@ export class SmartMenuDirective implements OnInit, AfterViewInit {
 
   ngOnDestroy() {
     this.layoutSub.unsubscribe();
+  }
+
+  private buildParentLinks() {
+  //Since menus are dynamic put build out here../
+  this.$menu.find('li:has(> ul)').each((i, li) => {
+    let $menuItem = $(li);
+    let $a = $menuItem.find('>a');
+    let sign = $('<b class="collapse-sign"><em class="fa fa-plus-square-o"/></b>');
+    $a.on('click', (e) => {
+      this.toggle($menuItem);
+      e.stopPropagation();
+      return false;
+    }).append(sign);
+  })
   }
 
   private processLayout = (layoutStore) => {
