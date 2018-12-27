@@ -1,1 +1,0 @@
-{"version":3,"file":"layout.reducer.js","sourceRoot":"","sources":["../../../../../../../src/app/core/store/layout/layout.reducer.ts"],"names":[],"mappings":";;AAOa,QAAA,kBAAkB,GAAgB,EAE9C,CAAC;AAEF,SAAgB,aAAa,CAAC,KAA0B,EAAE,MAAqB;IAAjD,sBAAA,EAAA,QAAQ,0BAAkB;IACtD,QAAQ,MAAM,CAAC,IAAI,EAAE;QAEnB;YACE,OAAO,KAAK,CAAC;KAChB;AACH,CAAC;AAND,sCAMC"}
